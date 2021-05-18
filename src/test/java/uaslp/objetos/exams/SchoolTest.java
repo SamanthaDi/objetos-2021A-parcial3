@@ -136,4 +136,5 @@ public class SchoolTest {
         assertEquals(90, average);
 
     }
+
 }

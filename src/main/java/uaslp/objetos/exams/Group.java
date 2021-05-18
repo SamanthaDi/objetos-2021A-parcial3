@@ -1,43 +1,49 @@
 package uaslp.objetos.exams;
 
-public class Group<Student>{
-    private int size;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Group{
     private int capacity;
-    private boolean Availability;
+    private int availability;
+    List<Student> students = new LinkedList<>();
+    private double average;
 
 
-    private Object Students[];
-    public Group(Integer size) {this.Students = new Object[size]; }
-
-    public void addStudent(Student Student) throws GroupIsFullException {
-        if (size >= Students.length) {
-            throw new GroupIsFullException;
-        }
-        this.Students[size] = Student;
-        size++;
+    public Group(int capacity) {
+        this.capacity = capacity;
+        this.availability = capacity;
     }
 
-    public Student getStudents(int size){
-        /*if(index <0 || index >= size){
-            throw new MyArrayIndexOutOfBoundsException();
-        }*/
-        return (Student) Students[size];
-    }
-
-    public int getCapacity() {
+    public int getCapacity(){
         return capacity;
     }
 
-    public boolean getAvailability() {
-        if(capacity > size)
-            return false;
-        else
-            return true;
+    public int getAvailability() {
+        return availability;
     }
+
+
+    public void addStudent(Student student) throws GroupIsFullException {
+        if(students.size() > capacity){
+            throw new GroupIsFullException();
+        }
+        students.add(student);
+        availability--;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
 
     public double getAverage() {
-        return;
+
+        double prom = 0;
+        for(int i=0; i <students.size(); i++){
+            prom =+ students.get(i).getAverage();
+        }
+        average = prom/3;
+        return average;
     }
-
-
 }
