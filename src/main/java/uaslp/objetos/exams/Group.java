@@ -25,7 +25,7 @@ public class Group{
 
 
     public void addStudent(Student student){
-        if(students.size() > capacity){
+        if(availability <= 0){
             throw new GroupIsFullException();
         }
         students.add(student);
@@ -41,9 +41,9 @@ public class Group{
 
         double prom = 0;
         for(int i=0; i <students.size(); i++){
-            prom =+ students.get(i).getAverage();
+            prom = prom + students.get(i).getAverage();
         }
-        average = prom/3;
+        average = prom/students.size();
         return average;
     }
 }

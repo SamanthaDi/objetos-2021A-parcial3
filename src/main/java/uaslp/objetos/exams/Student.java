@@ -7,13 +7,14 @@ import java.util.List;
 public class Student {
     private String name;
     private int code;
-    List<Integer> scores = new ArrayList<>();
+    private Integer score[];
 
     private double average;
 
     public Student(String name, int code) {
         this.name = name;
         this.code = code;
+        score = new Integer[3];
     }
 
     public String getName() {
@@ -28,20 +29,20 @@ public class Student {
         if(partial < 1 || partial > 3){
             throw new InvalidPartialException();
         }
-        scores.add(score);
+        this.score[partial-1] = score;
     }
 
 
-    public double getAverage() {
+    public double getAverage(){
 
         double prom = 0;
-        for(int i=0; i <scores.size(); i++){
-            if(scores.get(i) == null){
-                throw new MissingScoreException();
+        for(int i=0; i <3; i++){
+            if(score[i] == null){
+                throw new MissingScoreException("Missing partial " + (i+1));
             }
-            prom =+ scores.get(i);
+            prom = prom + score[i];
         }
-        average = prom/3;
+        average = prom / 3;
         return average;
     }
 
