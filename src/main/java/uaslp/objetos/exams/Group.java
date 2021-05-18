@@ -24,7 +24,7 @@ public class Group{
     }
 
 
-    public void addStudent(Student student) throws GroupIsFullException {
+    public void addStudent(Student student){
         if(students.size() > capacity){
             throw new GroupIsFullException();
         }

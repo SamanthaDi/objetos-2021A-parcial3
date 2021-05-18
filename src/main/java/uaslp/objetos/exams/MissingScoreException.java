@@ -1,5 +1,5 @@
 package uaslp.objetos.exams;
 
-public class MissingScoreException extends Exception {
+public class MissingScoreException extends RuntimeException {
 }
 //getaver

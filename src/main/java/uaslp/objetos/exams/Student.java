@@ -32,7 +32,7 @@ public class Student {
     }
 
 
-    public double getAverage() throws MissingScoreException {
+    public double getAverage() {
 
         double prom = 0;
         for(int i=0; i <scores.size(); i++){
